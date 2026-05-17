@@ -18,8 +18,19 @@ class SocieteFactory extends Factory
     public function definition(): array
     {
 
+        $societes = [
+            ['nom' => 'CTM', 'adresse_siege' => 'Rue Léon l\'Africain, Casablanca'],
+            ['nom' => 'Supratours', 'adresse_siege' => 'Avenue Hassan II, Rabat'],
+            ['nom' => 'Ghazala Bus', 'adresse_siege' => 'Boulevard Mohammed V, Marrakech'],
+            ['nom' => 'Trans Gharb', 'adresse_siege' => 'Avenue Mohammed VI, Kénitra'],
+            ['nom' => 'Pullman du Maroc', 'adresse_siege' => 'Rue de Fès, Meknès'],
+        ];
+
+        $entry = $this->faker->unique()->randomElement($societes);
+
         return [
-            
+            'nom' => $entry['nom'],
+            'adresse_siege' => $entry['adresse_siege'],
         ];
     }
 }
