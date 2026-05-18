@@ -1,8 +1,7 @@
 <?php
 
 use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -11,9 +10,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('buses', function (Blueprint $table) {
-            $table->enum("comfort", ['basique', 'bon', 'comfortable']);
-        });
+        DB::table('buses')
+            ->where('comfort', 'normale')
+            ->update(['comfort' => 'bon']);
+
+        DB::statement("ALTER TABLE buses MODIFY comfort ENUM('basique', 'bon', 'comfortable') NOT NULL");
     }
 
     /**
@@ -21,6 +22,10 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        DB::table('buses')
+            ->where('comfort', 'bon')
+            ->update(['comfort' => 'normale']);
+
+        DB::statement("ALTER TABLE buses MODIFY comfort ENUM('basique', 'normale', 'comfortable') NOT NULL");
     }
 };

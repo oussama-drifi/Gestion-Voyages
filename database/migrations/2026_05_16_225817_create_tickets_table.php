@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('tickets', function (Blueprint $table) {
             $table->id("ticket_id");
             $table->integer("numero_place");
-            $table->decimal("prix", 4, 2);
+            $table->decimal("prix", 6, 2);
             $table->foreignId("user_id")->constrained("users", "user_id")->onDelete("cascade");
             $table->foreignId("voyage_id")->constrained("voyages", "voyage_id")->onDelete("cascade");
             $table->timestamps();
