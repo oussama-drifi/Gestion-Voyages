@@ -8,8 +8,6 @@ use App\Models\User;
 use App\Models\Societe;
 use App\Models\Bus;
 use App\Models\Agence;
-use App\Models\Ticket;
-use App\Models\Voyage;
 
 class DatabaseSeeder extends Seeder
 {

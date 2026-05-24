@@ -28,7 +28,7 @@ class VoyageObserver
     public function deleted(Voyage $voyage): void
     {
         // les tickets du voyage principale
-        $voyage->tickets()->update(["statut", "annulé"]);
+        $voyage->tickets()->update(["statut" => "annulé"]);
 
         // les tickets des sous voyages
         $voyage->sousVoyages()->each(function ($sousVoyage) {
