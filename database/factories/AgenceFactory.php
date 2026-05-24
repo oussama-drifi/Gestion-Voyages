@@ -18,13 +18,11 @@ class AgenceFactory extends Factory
      */
     public function definition(): array
     {
-        $villes = ['Casablanca', 'Rabat', 'Marrakech', 'Fès', 'Meknès', 'Tanger', 'Agadir', 'Oujda', 'Kénitra', 'Tétouan'];
-        $agences = ['maarif', 'al wifak', 'hay salam', 'borgogne', 'boukhalef', 'mehdia', 'hay mly abdellah', 'avenue taddart'];
 
         return [
-            'nom'        => 'Agence '.$this->faker->randomElement($agences),
+            'nom'        => 'Agence '.$this->faker->randomElement(['maarif', 'al wifak', 'hay salam', 'borgogne', 'boukhalef', 'mehdia', 'hay mly abdellah', 'avenue taddart']),
             'adresse'    => $this->faker->streetAddress(),
-            'ville'      => $this->faker->randomElement($villes),
+            'ville'      => $this->faker->randomElement(['Casablanca', 'Rabat', 'Marrakech', 'Fès', 'Meknès', 'Tanger', 'Agadir', 'Oujda', 'Kénitra', 'Tétouan']),
             'societe_id' => Societe::inRandomOrder()->value('societe_id'),
         ];
     }

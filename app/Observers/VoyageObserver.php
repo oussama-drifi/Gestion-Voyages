@@ -32,7 +32,7 @@ class VoyageObserver
 
         // les tickets des sous voyages
         $voyage->sousVoyages()->each(function ($sousVoyage) {
-            $sousVoyage->tickets()->update(["statut", "annulé"]);
+            $sousVoyage->tickets()->update(["statut" => "annulé"]);
         });
     }
 
