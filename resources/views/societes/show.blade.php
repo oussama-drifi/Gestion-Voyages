@@ -6,7 +6,7 @@
     <i class="bi bi-arrow-left me-1"></i>Retour
 </a>
 
-<div class="card shadow-sm mb-4">
+<div class="card mb-4">
     <div class="card-body">
         <div class="d-flex align-items-center gap-3 mb-3">
             <div class="rounded-3 p-3 bg-primary bg-opacity-10">
@@ -20,6 +20,7 @@
     </div>
 </div>
 
+{{-- Agences --}}
 <h5 class="fw-semibold mb-3"><i class="bi bi-shop me-2 text-success"></i>Agences ({{ $societe->agences->count() }})</h5>
 @if($societe->agences->isEmpty())
     <p class="text-muted">Aucune agence.</p>
@@ -28,7 +29,7 @@
         @foreach($societe->agences as $agence)
         <div class="col-md-6">
             <a href="{{ route('agences.show', $agence) }}" class="text-decoration-none">
-                <div class="card shadow-sm h-100">
+                <div class="card h-100">
                     <div class="card-body d-flex align-items-center gap-2">
                         <i class="bi bi-shop text-success fs-5"></i>
                         <div>
@@ -43,15 +44,16 @@
     </div>
 @endif
 
+{{-- Buses --}}
 <h5 class="fw-semibold mb-3"><i class="bi bi-bus-front me-2 text-warning"></i>Buses ({{ $societe->buses->count() }})</h5>
 @if($societe->buses->isEmpty())
-    <p class="text-muted">Aucun bus.</p>
+    <p class="text-muted mb-4">Aucun bus.</p>
 @else
-    <div class="row g-3">
+    <div class="row g-3 mb-4">
         @foreach($societe->buses as $bus)
         <div class="col-md-6 col-lg-4">
             <a href="{{ route('buses.show', $bus) }}" class="text-decoration-none">
-                <div class="card shadow-sm h-100">
+                <div class="card h-100">
                     <div class="card-body d-flex align-items-center gap-2">
                         <i class="bi bi-bus-front text-warning fs-5"></i>
                         <div>
@@ -65,4 +67,12 @@
         @endforeach
     </div>
 @endif
+
+{{-- Voyages --}}
+<div class="d-flex align-items-center justify-content-between mb-3">
+    <h5 class="fw-semibold mb-0"><i class="bi bi-map me-2 text-info"></i>Voyages</h5>
+    <a href="{{ route('societes.voyages.create', $societe) }}" class="btn btn-sm btn-info text-white">
+        <i class="bi bi-plus-circle me-1"></i>Nouveau voyage
+    </a>
+</div>
 @endsection

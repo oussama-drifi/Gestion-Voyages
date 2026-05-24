@@ -2,10 +2,15 @@
 @section('title', 'Voyages')
 
 @section('content')
-<div class="d-flex align-items-center mb-4 gap-2">
-    <i class="bi bi-map fs-3 text-info"></i>
-    <h1 class="h3 fw-bold mb-0">Voyages</h1>
-    <span class="badge bg-info text-dark ms-1">{{ $voyages->count() }}</span>
+<div class="d-flex align-items-center justify-content-between mb-4">
+    <div class="d-flex align-items-center gap-2">
+        <i class="bi bi-map fs-3 text-info"></i>
+        <h1 class="h3 fw-bold mb-0">Voyages</h1>
+        <span class="badge bg-info text-dark ms-1">{{ $voyages->count() }}</span>
+    </div>
+    <a href="{{ route('societes.index') }}" class="btn btn-outline-info btn-sm">
+        <i class="bi bi-building me-1"></i>Créer via une société
+    </a>
 </div>
 
 @if($voyages->isEmpty())

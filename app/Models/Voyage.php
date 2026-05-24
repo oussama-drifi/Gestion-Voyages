@@ -21,7 +21,8 @@ class Voyage extends Model
         'agence_depart_id',
         'agence_arrive_id',
         'voyage_principale_id',
-        'bus_id'
+        'bus_id',
+        'prix',
     ];
 
     protected function casts(): array

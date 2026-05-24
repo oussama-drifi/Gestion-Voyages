@@ -23,14 +23,13 @@ class LoginController extends Controller
             return back()->withErrors(['email' => 'Email ou mot de passe incorrect.'])->onlyInput('email');
         }
 
-        if (Auth::user()->role !== 'admin') {
-            Auth::logout();
-            return back()->withErrors(['email' => 'Accès réservé aux administrateurs.'])->onlyInput('email');
-        }
-
         $request->session()->regenerate();
 
-        return redirect()->intended(route('home'));
+        if (Auth::user()->role === 'admin') {
+            return redirect()->intended(route('home'));
+        }
+
+        return redirect()->intended(route('client.voyages.index'));
     }
 
     public function logout(Request $request)
