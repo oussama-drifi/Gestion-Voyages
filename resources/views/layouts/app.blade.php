@@ -45,6 +45,16 @@
                             </a>
                         </li>
                     @endforeach
+                    @auth
+                    <li class="nav-item ms-2">
+                        <form action="{{ route('logout') }}" method="POST" class="d-inline">
+                            @csrf
+                            <button type="submit" class="btn btn-sm btn-outline-light">
+                                <i class="bi bi-box-arrow-right me-1"></i>Déconnexion
+                            </button>
+                        </form>
+                    </li>
+                    @endauth
                 </ul>
             </div>
         </div>
